@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  xmlns:Views="clr-namespace:ScreenTransition.Views;assembly=ScreenTransition"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ScreenTransition.Views.RootPage"
+                  IsPresented="{Binding IsPresented.Value, Mode=TwoWay}">
+
+    <!-- Master（メニュー部）-->
+    <MasterDetailPage.Master>
+        <Views:MenuPage />
+    </MasterDetailPage.Master>
+
+    <!-- Detail（詳細部）-->
+    <MasterDetailPage.Detail>
+        <ContentPage Title="Dummy" >
+            <StackLayout>
+                <Label Text="Dummy"/>
+            </StackLayout>
+        </ContentPage>
+ß    </MasterDetailPage.Detail>
+</MasterDetailPage>

@@ -25,16 +25,15 @@ namespace ScreenTransition
             InitializeComponent();
 
             // 起動直後にMainPageを表示する。
-            NavigationService.NavigateAsync("NavigationPage/MainPage");
+            // NavigationService.NavigateAsync("NavigationPage/MainPage");
+            NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-
-            // View「MainPage」ViewModels「MainPageViewModel」を登録する。
+            containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
         }
     }
-
 }
