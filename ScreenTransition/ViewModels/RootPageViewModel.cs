@@ -24,8 +24,8 @@ namespace ScreenTransition.ViewModels
             },
             new MenuItem
             {
-                Title = "Leads",
-                PageName = "LeadsPage"
+                Title = "サブページ",
+                PageName = "SubPage"
             },
             new MenuItem
             {

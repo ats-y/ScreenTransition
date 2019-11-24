@@ -11,7 +11,11 @@
         <!-- Place new controls here -->
         <Label
             Text="Welcome to Xamarin.Forms!"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand" />
+            HorizontalOptions="Center" />
+
+        <Button
+            Text="次の画面へ"
+            Command="{Binding NextPageCommand}"/>
+
     </StackLayout>
 </ContentPage>

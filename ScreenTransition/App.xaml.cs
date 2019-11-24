@@ -1,6 +1,7 @@
 ﻿using System;
 using Prism;
 using Prism.Ioc;
+using Prism.Unity;
 using ScreenTransition.ViewModels;
 using ScreenTransition.Views;
 using Xamarin.Forms;
@@ -8,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace ScreenTransition
 {
-    public partial class App
+    public partial class App : PrismApplication
     {
         public App()
         {
@@ -25,7 +26,7 @@ namespace ScreenTransition
             InitializeComponent();
 
             // 起動直後にMainPageを表示する。
-            // NavigationService.NavigateAsync("NavigationPage/MainPage");
+            //NavigationService.NavigateAsync("/NavigationPage/ChildPage");
             NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
         }
 
@@ -34,6 +35,9 @@ namespace ScreenTransition
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SubPage, SubPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChildPage, ChildPageViewModel>();
+
         }
     }
 }

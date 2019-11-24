@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ScreenTransition.ViewModels;
 using Xamarin.Forms;
 
 namespace ScreenTransition.Views
@@ -13,9 +15,11 @@ namespace ScreenTransition.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private MainPageViewModel _viewModel => this.BindingContext as MainPageViewModel;
+
         public MainPage()
         {
             InitializeComponent();
-        }
+        } 
     }
 }
