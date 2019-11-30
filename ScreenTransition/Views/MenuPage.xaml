@@ -11,7 +11,8 @@
                Margin="10,36,0,5" />
 
         <!-- メニュー一覧 -->
-        <ListView ItemsSource="{Binding Menus}"
+        <ListView x:Name="MenuList"
+                  ItemsSource="{Binding Menus}"
                   VerticalOptions="FillAndExpand"
                   ItemSelected="ListViewMenu_ItemSelected">
             <ListView.ItemTemplate>

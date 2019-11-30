@@ -60,7 +60,7 @@ namespace ScreenTransition.ViewModels
         /// <returns></returns>
         public async Task PageChangeAsync(MenuItem menuItem)
         {
-            await this.NavigationService.NavigateAsync($"NavigationPage/{menuItem.PageName}");
+            var result = await this.NavigationService.NavigateAsync($"NavigationPage/{menuItem.PageName}");
 
             // Master（メニュー）を隠す。
             this.IsPresented.Value = false;
