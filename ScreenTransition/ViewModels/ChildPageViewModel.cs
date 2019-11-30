@@ -5,25 +5,26 @@ using Reactive.Bindings;
 
 namespace ScreenTransition.ViewModels
 {
-    public class ChildPageViewModel : BindableBase, INavigationAware, IDestructible
+    public class ChildPageViewModel : BindableBase
     {
         public ReactiveProperty<string> MsgText { get; set; } = new ReactiveProperty<string>();
 
-        public ChildPageViewModel()
+        public ReactiveCommand CloseCommand { get; set; } = new ReactiveCommand();
+
+        private INavigationService _navigationService;
+
+        public ChildPageViewModel(INavigationService navigation)
         {
+            _navigationService = navigation;
+
             MsgText.Value = "Child Page Text";
+
+            CloseCommand.Subscribe(_ => OnCloseCommand());
         }
 
-        public void Destroy()
+        private void OnCloseCommand()
         {
-        }
-
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
+            _navigationService.GoBackAsync();
         }
     }
 }

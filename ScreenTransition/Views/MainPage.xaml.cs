@@ -22,10 +22,19 @@ namespace ScreenTransition.Views
             InitializeComponent();
         }
 
-
         public Task<bool> CanChanging()
         {
             return null;
+        }
+
+        public async void OnPushAsync(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ChildPage());
+        }
+
+        public async void OnPushModalAsync(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new ChildPage());
         }
     }
 }

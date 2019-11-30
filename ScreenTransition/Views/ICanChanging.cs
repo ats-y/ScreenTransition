@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace ScreenTransition.Views
 {
     /// <summary>
-    /// ページ遷移イベント
+    /// ページ遷移直前の確認インタフェイス
     /// </summary>
     public interface ICanChanging
     {

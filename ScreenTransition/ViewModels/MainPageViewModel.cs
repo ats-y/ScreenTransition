@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -12,13 +13,15 @@ namespace ScreenTransition.ViewModels
     {
         public INavigationService _navigationService;
 
-        public AsyncReactiveCommand NextPageCommand { get; set; } = new AsyncReactiveCommand();
+        public AsyncReactiveCommand<string> NavigateCommand { get; set; } = new AsyncReactiveCommand<string>();
+        public AsyncReactiveCommand<string> ModalNavigateCommand { get; set; } = new AsyncReactiveCommand<string>();
 
         public MainPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
-            NextPageCommand.Subscribe(_ => OnNextPageCommandAsync());
+            NavigateCommand.Subscribe(OnNavigate);
+            ModalNavigateCommand.Subscribe(OnModalNavigate);
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -31,10 +34,18 @@ namespace ScreenTransition.ViewModels
             Debug.WriteLine("OnNavigatedTo");
         }
 
-        private async System.Threading.Tasks.Task OnNextPageCommandAsync()
+        private async Task OnNavigate(string parameter)
         {
-            Debug.WriteLine("OnNextPageCommandAsync");
-            await _navigationService.NavigateAsync("NavigationPage/ChildPage", useModalNavigation:true);
+            Debug.WriteLine($"OnNavigate {parameter}");
+            await _navigationService.NavigateAsync(parameter, useModalNavigation: false);
         }
+
+        private async Task OnModalNavigate(string parameter)
+        {
+            Debug.WriteLine($"OnModalNavigate {parameter}");
+            await _navigationService.NavigateAsync(parameter, useModalNavigation: true);
+        }
+
+
     }
 }

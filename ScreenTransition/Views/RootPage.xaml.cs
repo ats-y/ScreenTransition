@@ -10,6 +10,7 @@ namespace ScreenTransition.Views
         public RootPage()
         {
             InitializeComponent();
+          
         }
     }
 }
