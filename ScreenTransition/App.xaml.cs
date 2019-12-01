@@ -37,6 +37,7 @@ namespace ScreenTransition
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<SubPage, SubPageViewModel>();
             containerRegistry.RegisterForNavigation<ChildPage, ChildPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChildSecondPage, ChildSecondPageViewModel>();
 
         }
     }

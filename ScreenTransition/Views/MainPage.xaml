@@ -7,76 +7,124 @@
     mc:Ignorable="d"
     x:Class="ScreenTransition.Views.MainPage"
     Title="画面遷移">
-    <StackLayout>
-        <Frame
-            Margin="5,0,5,0"
-            BorderColor="Gray"
-            HasShadow="False">
-            <StackLayout>
-                <Label
-                    Text="Prism Normal" />
+    <ScrollView>
+        <StackLayout>
+            <Frame
+                Margin="5,0,5,0"
+                BorderColor="Gray"
+                HasShadow="False">
+                <StackLayout>
 
-                <Button
-                    Text="NavigationPage/ChildPage"
-                    Command="{Binding NavigateCommand}"
-                    CommandParameter="NavigationPage/ChildPage" />
+                    <Label
+                        Text="Prism Normal" />
 
-                <Button
-                    Text="ChildPage"
-                    Command="{Binding NavigateCommand}"
-                    CommandParameter="ChildPage" />
+                    <Label
+                        Text="ボタンのテキストはINavigationService.NavigationAsync()の引数です。"
+                        FontSize="Small" />
 
-                <Button
-                    Text="/ChildPage"
-                    Command="{Binding NavigateCommand}"
-                    CommandParameter="/ChildPage" />
+                    <Frame
+                        Margin="5,0,5,0"
+                        BorderColor="Gray"
+                        HasShadow="False">
+                        <StackLayout>
 
-            </StackLayout>
-        </Frame>
+                            <Button
+                                Text="ChildPage"
+                                Command="{Binding NavigateCommand}"
+                                CommandParameter="ChildPage" />
 
-        <Frame
-            Margin="5,0,5,0"
-            BorderColor="Gray"
-            HasShadow="False">
-            <StackLayout>
-                <Label
-                    Text="Prism Modal" />
+                            <Label
+                                Text="遷移先で右スパイプするとMasterPage(メニュー)が表示されてしまう。これを避けたい。"
+                                FontSize="Small" />
+                        </StackLayout>
+                    </Frame>
 
-                <Button
-                    Text="NavigationPage/ChildPage"
-                    Command="{Binding ModalNavigateCommand}"
-                    CommandParameter="NavigationPage/ChildPage" />
+                    <Button
+                        Text="NavigationPage/RootPage/ChildPage"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="NavigationPage/RootPage/ChildPage" />
 
-                <Button
-                    Text="ChildPage"
-                    Command="{Binding ModalNavigateCommand}"
-                    CommandParameter="ChildPage" />
+                    <Button
+                        Text="NavigationPage/ChildPage"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="NavigationPage/ChildPage" />
 
-                <Button
-                    Text="/ChildPage"
-                    Command="{Binding NavigateCommand}"
-                    CommandParameter="/ChildPage" />
+                    <Button
+                        Text="RootPage/ChildPage"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="RootPage/ChildPage" />
 
-            </StackLayout>
-        </Frame>
+                    <Button
+                        Text="/ChildPage"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="/ChildPage" />
 
-        <Frame
-            Margin="5,0,5,0"
-            BorderColor="Gray"
-            HasShadow="False">
-            <StackLayout>
-                <Label
-                    Text="No Prism" />
+                </StackLayout>
+            </Frame>
 
-                <Button
-                    Text="PushAsync"
-                    Clicked="OnPushAsync" />
+            <Frame
+                Margin="5,0,5,0"
+                BorderColor="Gray"
+                HasShadow="False">
+                <StackLayout>
 
-                <Button
-                    Text="PushModalAsync"
-                    Clicked="OnPushModalAsync" />
+                    <Label
+                        Text="Prism Modal" />
 
-            </StackLayout>
-        </Frame>
-    </StackLayout>
+                    <Label
+                        Text="ボタンのテキストはINavigationService.NavigationAsync()の引数です。"
+                        FontSize="Small" />
+
+                    <Frame
+                        Margin="5,0,5,0"
+                        BorderColor="Gray"
+                        HasShadow="False">
+                        <StackLayout>
+
+                            <Button
+                                Text="NavigationPage/ChildPage"
+                                Command="{Binding ModalNavigateCommand}"
+                                CommandParameter="NavigationPage/ChildPage" />
+
+                            <Label
+                                Text="遷移先でメニュー(MasterPage)は表示されないが、ナビゲーションバーに戻るボタンが表示されない。"
+                                FontSize="Small" />
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Button
+                        Text="ChildPage"
+                        Command="{Binding ModalNavigateCommand}"
+                        CommandParameter="ChildPage" />
+
+                    <Button
+                        Text="/ChildPage"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="/ChildPage" />
+
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                Margin="5,0,5,0"
+                BorderColor="Gray"
+                HasShadow="False">
+                <StackLayout>
+
+                    <Label
+                        Text="No Prism" />
+
+                    <Button
+                        Text="PushAsync"
+                        Clicked="OnPushAsync" />
+
+                    <Button
+                        Text="PushModalAsync"
+                        Clicked="OnPushModalAsync" />
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

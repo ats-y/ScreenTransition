@@ -19,18 +19,13 @@ namespace ScreenTransition.ViewModels
         {
             new MenuItem
             {
-                Title = "メイン",
+                Title = "業務機能①",
                 PageName = "MainPage"
             },
             new MenuItem
             {
-                Title = "サブページ",
+                Title = "業務機能② 終了確認あり",
                 PageName = "SubPage"
-            },
-            new MenuItem
-            {
-                Title = "Accounts",
-                PageName = "AccountsPage"
             },
         };
 

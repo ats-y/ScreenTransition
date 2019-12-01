@@ -13,10 +13,18 @@
     </ContentPage.ToolbarItems>
     <StackLayout
         Orientation="Vertical">
+
         <Label
-            Text="ChildPage" />
-        <Label
+            HorizontalTextAlignment="Center"
             Text="{Binding MsgText.Value, FallbackValue='binding faild'}" />
+
+        <Label
+            HorizontalTextAlignment="Center"
+            Text="この画面ではメニュー(Master)画面を表示したくない！&#xA;ナビゲーションバーで戻るボタンを表示したい！" />
+
+        <Button
+            Text="さらに子ページを表示"
+            Command="{Binding NextPageCommand}" />
 
         <Button
             Text="とじる"
