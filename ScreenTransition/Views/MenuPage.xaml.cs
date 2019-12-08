@@ -48,10 +48,10 @@ namespace ScreenTransition.Views
                 if( naviPage != null)
                 {
                     // 現在表示中のPageに変更可能かどうか確認する。
-                    ICanChanging trasition = naviPage.CurrentPage as ICanChanging;
+                    ITrasitionPage trasition = naviPage.CurrentPage as ITrasitionPage;
                     if (trasition != null)
                     {
-                        Task<bool> task = trasition.CanChanging();
+                        Task<bool> task = trasition.BeforeTransitionTask();
                         if (task != null)
                         {
                             bool ret = await task;

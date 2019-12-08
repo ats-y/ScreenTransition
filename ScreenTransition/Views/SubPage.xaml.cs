@@ -5,14 +5,14 @@ using Xamarin.Forms;
 
 namespace ScreenTransition.Views
 {
-    public partial class SubPage : ContentPage, ICanChanging
+    public partial class SubPage : ContentPage, ITrasitionPage
     {
         public SubPage()
         {
             InitializeComponent();
         }
 
-        public Task<bool> CanChanging()
+        public Task<bool> BeforeTransitionTask()
         {
             return DisplayAlert("確認", "ページを切り替えて良いですか？", "ええで", "あかん");
         }
