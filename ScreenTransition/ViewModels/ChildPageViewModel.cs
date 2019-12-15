@@ -30,7 +30,7 @@ namespace ScreenTransition.ViewModels
 
         private async Task OnCloseCommandAsync()
         {
-            await _navigationService.GoBackAsync();
+            await _navigationService.GoBackAsync(useModalNavigation: true);
         }
     }
 }

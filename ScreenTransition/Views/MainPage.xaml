@@ -94,9 +94,9 @@
                     </Frame>
 
                     <Button
-                        Text="ChildPage"
+                        Text="Modal01Page"
                         Command="{Binding ModalNavigateCommand}"
-                        CommandParameter="ChildPage" />
+                        CommandParameter="Modal01Page" />
 
                     <Button
                         Text="/ChildPage"

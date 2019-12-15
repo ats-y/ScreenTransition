@@ -34,7 +34,7 @@ namespace ScreenTransition.Views
 
         public async void OnPushModalAsync(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new ChildPage());
+            await Navigation.PushModalAsync(new Modal01Page());
         }
     }
 }

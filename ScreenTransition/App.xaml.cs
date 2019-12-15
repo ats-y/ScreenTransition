@@ -40,6 +40,7 @@ namespace ScreenTransition
             containerRegistry.RegisterForNavigation<SubPage, SubPageViewModel>();
             containerRegistry.RegisterForNavigation<ChildPage, ChildPageViewModel>();
             containerRegistry.RegisterForNavigation<ChildSecondPage, ChildSecondPageViewModel>();
+            containerRegistry.RegisterForNavigation<Modal01Page, Modal01PageViewModel>();
 
         }
     }
