@@ -27,13 +27,15 @@ namespace ScreenTransition
 
             // 起動直後にMainPageを表示する。
             //NavigationService.NavigateAsync("/NavigationPage/ChildPage");
-            NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
+            //NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
+            NavigationService.NavigateAsync("/NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewMode>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<SubPage, SubPageViewModel>();
             containerRegistry.RegisterForNavigation<ChildPage, ChildPageViewModel>();
