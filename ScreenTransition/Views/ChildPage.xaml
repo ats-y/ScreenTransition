@@ -16,7 +16,18 @@
         <ResourceDictionary>
             <Color
                 x:Key="SpColor">Yellow</Color>
-            <converter:TestConverter x:Key="KeyOfTestConverter"/>
+            <converter:TestConverter
+                x:Key="KeyOfTestConverter" />
+            <converter:IsLargerConverter
+                x:Key="KeyOfIsLargerConverter" />
+            <converter:IsSmallConverter
+                x:Key="KeyOfIsSmallConverter" />
+            <x:String x:Key="LongText">
+                1234567890123456789012345678901234567890123456789012345678901234567890
+            </x:String>
+            <x:String x:Key="ShortText">
+                1234567890
+            </x:String>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -38,7 +49,7 @@
                         x:Name="text"
                         FontSize="Micro"
                         LineBreakMode="TailTruncation"
-                        Text="1234567890123456789012345678901234567890123456789012345678901234567890" />
+                        Text="{StaticResource LongText}" />
                 </ScrollView>
 
                 <Label
@@ -46,20 +57,62 @@
                     Text="..."
                     FontSize="Micro"
                     BackgroundColor="Beige"
+                    IsVisible="False"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
-                    IsVisible="{Binding Source={x:Reference scrV}
-                        ,Path=ScrollX
-                        ,Converter={StaticResource KeyOfTestConverter}}" />
-
+                    AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize">
+                    <Label.Triggers>
+                        <MultiTrigger
+                            TargetType="Label">
+                            <MultiTrigger.Conditions>
+                                <!-- スクロール量が0より大きくなったら表示する-->
+                                <BindingCondition
+                                    Binding="{Binding Source={x:Reference scrV}
+                                                ,Path=ScrollX
+                                                ,Converter={StaticResource KeyOfTestConverter}}"
+                                    Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter
+                                Property="IsVisible"
+                                Value="True" />
+                        </MultiTrigger>
+                    </Label.Triggers>
+                </Label>
 
                 <Label
                     x:Name="TailTruncation"
                     Text="..."
                     FontSize="Micro"
-                    BackgroundColor="Red"
+                    BackgroundColor="Beige"
+                    IsVisible="False"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize" />
+                    AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize">
+                    <Label.Triggers>
+                        <MultiTrigger
+                            TargetType="Label">
+                            <MultiTrigger.Conditions>
+                                <!-- スクロールビューよりテキストが大きいか -->
+                                <BindingCondition
+                                    Binding="{Binding Source={x:Reference text}
+                                                ,Path=Width
+                                                ,ConverterParameter={x:Reference scrV}
+                                                ,Converter={StaticResource KeyOfIsSmallConverter}}"
+                                    Value="True" />
+
+                                <!-- スクロール量が0より大きくなったら表示する-->
+                                <BindingCondition
+                                    Binding="{Binding Source={x:Reference scrV}
+                                                ,Path=ScrollX
+                                                ,ConverterParameter={x:Reference scrV}
+                                                ,Converter={StaticResource KeyOfIsLargerConverter}}"
+                                    Value="True" />
+
+                            </MultiTrigger.Conditions>
+                            <Setter
+                                Property="IsVisible"
+                                Value="True" />
+                        </MultiTrigger>
+                    </Label.Triggers>
+                </Label>
 
             </AbsoluteLayout>
             <StackLayout
