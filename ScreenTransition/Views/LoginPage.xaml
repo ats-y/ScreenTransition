@@ -5,6 +5,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     x:Class="ScreenTransition.Views.LoginPage"
     Title="ログイン">
+
     <ContentPage.Content>
         <StackLayout>
             <Entry x:Name="UserIdEntry"

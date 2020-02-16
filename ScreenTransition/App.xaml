@@ -6,9 +6,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
     mc:Ignorable="d"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     x:Class="ScreenTransition.App">
 
     <Application.Resources>
+
+        <ResourceDictionary>
+
+            <Style
+                TargetType="NavigationPage">
+                <Setter
+                    Property="BarBackgroundColor"
+                    Value="Beige" />
+                <Setter
+                    Property="BarTextColor"
+                    Value="DarkBlue" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Aqua" />
+                <!--
+                <Setter
+                    Property="ios:NavigationPage.HideNavigationBarSeparator"
+                    Value="True"/>
+                -->
+            </Style>
+
+        </ResourceDictionary>
+
+
+
     </Application.Resources>
+
 
 </prism:PrismApplication>

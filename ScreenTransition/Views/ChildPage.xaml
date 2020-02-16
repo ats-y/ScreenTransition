@@ -4,29 +4,104 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="clr-namespace:ScreenTransition.Converter"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     mc:Ignorable="d"
     x:Class="ScreenTransition.Views.ChildPage"
     x:Name="Page"
+    ios:NavigationPage.HideNavigationBarSeparator="true"
     Title="ChildPage">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color
+                x:Key="SpColor">Yellow</Color>
+            <converter:TestConverter x:Key="KeyOfTestConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <!-- 自前のタイトルバー -->
-    <NavigationPage.TitleView>
-        <AbsoluteLayout>
+    <NavigationPage.TitleView
+        ios:NavigationPage.HideNavigationBarSeparator="true">
 
-            <!-- タイトル -->
-            <Label Text="{Binding Source={x:Reference Page},
+        <Grid
+            x:Name="grid">
+
+            <AbsoluteLayout
+                Grid.Row="0">
+                <ScrollView
+                    x:Name="scrV"
+                    AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                    AbsoluteLayout.LayoutBounds="0.5,0,1,1"
+                    Orientation="Horizontal">
+                    <Label
+                        x:Name="text"
+                        FontSize="Micro"
+                        LineBreakMode="TailTruncation"
+                        Text="1234567890123456789012345678901234567890123456789012345678901234567890" />
+                </ScrollView>
+
+                <Label
+                    x:Name="HeadTruncation"
+                    Text="..."
+                    FontSize="Micro"
+                    BackgroundColor="Beige"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
+                    IsVisible="{Binding Source={x:Reference scrV}
+                        ,Path=ScrollX
+                        ,Converter={StaticResource KeyOfTestConverter}}" />
+
+
+                <Label
+                    x:Name="TailTruncation"
+                    Text="..."
+                    FontSize="Micro"
+                    BackgroundColor="Red"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize" />
+
+            </AbsoluteLayout>
+            <StackLayout
+                Grid.Row="1"
+                Orientation="Horizontal">
+                <Label
+                    Text="{Binding Source={x:Reference scrV},Path=ScrollX}" />
+                <Label
+                    Text="{Binding Source={x:Reference scrV},Path=Width}" />
+                <Label
+                    Text="{Binding Source={x:Reference text},Path=Width}" />
+            </StackLayout>
+        </Grid>
+
+        <!--<AbsoluteLayout
+            BackgroundColor="Green">
+
+             タイトル 
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize">
+                <Label
+                    Text="{Binding Source={x:Reference Page},
                                   Path=Title}"
-                   FontSize="Header"
-                   FontAttributes="Bold"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                   AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize"/>
-
-            <!-- やめるボタン -->
-            <Button Text="やめる"
                     FontSize="Header"
-                    Command="{Binding CloseCommand}"/>
+                    FontAttributes="Bold" />
 
-        </AbsoluteLayout>
+                <ScrollView
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="Micro"
+                        Text="1234567890123456789012345678901234567890123456789012345678901234567890" />
+                </ScrollView>
+
+            </StackLayout>
+             やめるボタン 
+            <Button
+                Text="やめる"
+                FontSize="Header"
+                Command="{Binding CloseCommand}" />
+
+        </AbsoluteLayout>-->
     </NavigationPage.TitleView>
 
     <StackLayout
@@ -35,6 +110,7 @@
         <Label
             HorizontalTextAlignment="Center"
             Text="{Binding MsgText.Value, FallbackValue='binding faild'}" />
+
 
         <Label
             HorizontalTextAlignment="Center"
