@@ -14,20 +14,19 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color
-                x:Key="SpColor">Yellow</Color>
-            <converter:TestConverter
-                x:Key="KeyOfTestConverter" />
-            <converter:IsLargerConverter
-                x:Key="KeyOfIsLargerConverter" />
-            <converter:IsSmallConverter
-                x:Key="KeyOfIsSmallConverter" />
-            <x:String x:Key="LongText">
+            <converter:IsVisibleTailTruncationConverter
+                x:Key="KeyOfTailTruncationConv" />
+            <converter:IsVisibleHeadTruncationConverter
+                x:Key="KeyOfHeadTruncationConv" />
+            <x:String
+                x:Key="LongText">
                 1234567890123456789012345678901234567890123456789012345678901234567890
             </x:String>
-            <x:String x:Key="ShortText">
+            <x:String
+                x:Key="ShortText">
                 1234567890
             </x:String>
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -38,8 +37,22 @@
         <Grid
             x:Name="grid">
 
+            <!-- 横スクロール可能・スクロール可能方向に省略記号を表示するラベル -->
             <AbsoluteLayout
                 Grid.Row="0">
+
+                <AbsoluteLayout.Resources>
+                    <x:String
+                        x:Key="TruncateMark">...</x:String>
+                    <Style
+                        TargetType="Label">
+                        <Setter
+                            Property="BackgroundColor"
+                            Value="Beige" />
+                    </Style>
+                </AbsoluteLayout.Resources>
+
+                <!-- 横スクロール可能なラベル -->
                 <ScrollView
                     x:Name="scrV"
                     AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
@@ -47,74 +60,54 @@
                     Orientation="Horizontal">
                     <Label
                         x:Name="text"
-                        FontSize="Micro"
-                        LineBreakMode="TailTruncation"
                         Text="{StaticResource LongText}" />
                 </ScrollView>
 
+                <!-- 先端省略記号 -->
                 <Label
                     x:Name="HeadTruncation"
-                    Text="..."
-                    FontSize="Micro"
-                    BackgroundColor="Beige"
+                    Text="{StaticResource TruncateMark}"
                     IsVisible="False"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize">
                     <Label.Triggers>
-                        <MultiTrigger
-                            TargetType="Label">
-                            <MultiTrigger.Conditions>
-                                <!-- スクロール量が0より大きくなったら表示する-->
-                                <BindingCondition
-                                    Binding="{Binding Source={x:Reference scrV}
-                                                ,Path=ScrollX
-                                                ,Converter={StaticResource KeyOfTestConverter}}"
-                                    Value="True" />
-                            </MultiTrigger.Conditions>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding Source={x:Reference scrV}
+                                , Path=ScrollX
+                                , Converter={StaticResource KeyOfHeadTruncationConv}
+                                , ConverterParameter={x:Reference scrV}}"
+                            Value="True">
                             <Setter
                                 Property="IsVisible"
                                 Value="True" />
-                        </MultiTrigger>
+                        </DataTrigger>
                     </Label.Triggers>
                 </Label>
 
+                <!-- 末端省略記号 -->
                 <Label
                     x:Name="TailTruncation"
-                    Text="..."
-                    FontSize="Micro"
-                    BackgroundColor="Beige"
+                    Text="{StaticResource TruncateMark}"
                     IsVisible="False"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize">
                     <Label.Triggers>
-                        <MultiTrigger
-                            TargetType="Label">
-                            <MultiTrigger.Conditions>
-                                <!-- スクロールビューよりテキストが大きいか -->
-                                <BindingCondition
-                                    Binding="{Binding Source={x:Reference text}
-                                                ,Path=Width
-                                                ,ConverterParameter={x:Reference scrV}
-                                                ,Converter={StaticResource KeyOfIsSmallConverter}}"
-                                    Value="True" />
-
-                                <!-- スクロール量が0より大きくなったら表示する-->
-                                <BindingCondition
-                                    Binding="{Binding Source={x:Reference scrV}
-                                                ,Path=ScrollX
-                                                ,ConverterParameter={x:Reference scrV}
-                                                ,Converter={StaticResource KeyOfIsLargerConverter}}"
-                                    Value="True" />
-
-                            </MultiTrigger.Conditions>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding Source={x:Reference scrV}
+                                , Path=ScrollX
+                                , Converter={StaticResource KeyOfTailTruncationConv}
+                                , ConverterParameter={x:Reference scrV}}"
+                            Value="True">
                             <Setter
                                 Property="IsVisible"
                                 Value="True" />
-                        </MultiTrigger>
+                        </DataTrigger>
                     </Label.Triggers>
                 </Label>
-
             </AbsoluteLayout>
+
             <StackLayout
                 Grid.Row="1"
                 Orientation="Horizontal">
