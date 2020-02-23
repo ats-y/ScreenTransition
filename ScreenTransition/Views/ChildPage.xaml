@@ -40,61 +40,33 @@
 
             <controls:ScrollableLabel
                 Grid.Row="0"
-                Text="{StaticResource ShortText}"/>
-
+                Text="{Binding Source={Reference EntryStrings}, Path=Text}"
+                FontSize="Micro"
+                BackgroundColor="Beige"/>
 
             <controls:ScrollableLabel
                 Grid.Row="1"
-                Text="{StaticResource LongText}"/>
-            <!--<StackLayout
-                Grid.Row="1"
-                Orientation="Horizontal">
-                <Label
-                    Text="{Binding Source={x:Reference scrV},Path=ScrollX}" />
-                <Label
-                    Text="{Binding Source={x:Reference scrV},Path=Width}" />
-                <Label
-                    Text="{Binding Source={x:Reference text},Path=Width}" />
-            </StackLayout>-->
+                Text="{StaticResource LongText}"
+                BackgroundColor="Beige"/>
+
         </Grid>
 
-        <!--<AbsoluteLayout
-            BackgroundColor="Green">
-
-             タイトル 
-            <StackLayout
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize">
-                <Label
-                    Text="{Binding Source={x:Reference Page},
-                                  Path=Title}"
-                    FontSize="Header"
-                    FontAttributes="Bold" />
-
-                <ScrollView
-                    Orientation="Horizontal">
-                    <Label
-                        FontSize="Micro"
-                        Text="1234567890123456789012345678901234567890123456789012345678901234567890" />
-                </ScrollView>
-
-            </StackLayout>
-             やめるボタン 
-            <Button
-                Text="やめる"
-                FontSize="Header"
-                Command="{Binding CloseCommand}" />
-
-        </AbsoluteLayout>-->
     </NavigationPage.TitleView>
 
     <StackLayout
         Orientation="Vertical">
 
+        <controls:ScrollableLabel
+            Text="{StaticResource LongText}"
+            BackgroundColor="White"/>
+
+        <Entry
+            x:Name="EntryStrings"
+            Text="{StaticResource ShortText}"/>
+
         <Label
             HorizontalTextAlignment="Center"
             Text="{Binding MsgText.Value, FallbackValue='binding faild'}" />
-
 
         <Label
             HorizontalTextAlignment="Center"
