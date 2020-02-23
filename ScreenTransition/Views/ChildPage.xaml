@@ -15,10 +15,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:IsVisibleTailTruncationConverter
-                x:Key="KeyOfTailTruncationConv" />
-            <converter:IsVisibleHeadTruncationConverter
-                x:Key="KeyOfHeadTruncationConv" />
             <x:String
                 x:Key="LongText">
                 1234567890123456789012345678901234567890123456789012345678901234567890
@@ -41,12 +37,13 @@
             <controls:ScrollableLabel
                 Grid.Row="0"
                 Text="{Binding Source={Reference EntryStrings}, Path=Text}"
-                FontSize="Micro"
+                FontSize="Large"
                 BackgroundColor="Beige"/>
 
             <controls:ScrollableLabel
                 Grid.Row="1"
                 Text="{StaticResource LongText}"
+                FontSize="Large"
                 BackgroundColor="Beige"/>
 
         </Grid>
