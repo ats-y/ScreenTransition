@@ -27,6 +27,8 @@ namespace ScreenTransition.Converter
             // パラメータチェック。
             if (!(parameter is ScrollView scroll)) return false;
 
+            if (scroll.Width <= 0) return false;
+
             // ScrollViewがスクロール不可であれば非表示。
             double scrollSize = scroll.ContentSize.Width - scroll.Width;
             if (scrollSize <= 0) return false;

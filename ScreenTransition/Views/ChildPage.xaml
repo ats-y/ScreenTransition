@@ -5,6 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="clr-namespace:ScreenTransition.Converter"
+    xmlns:controls="clr-namespace:ScreenTransition.Controls"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     mc:Ignorable="d"
     x:Class="ScreenTransition.Views.ChildPage"
@@ -37,78 +38,15 @@
         <Grid
             x:Name="grid">
 
-            <!-- 横スクロール可能・スクロール可能方向に省略記号を表示するラベル -->
-            <AbsoluteLayout
-                Grid.Row="0">
+            <controls:ScrollableLabel
+                Grid.Row="0"
+                Text="{StaticResource ShortText}"/>
 
-                <AbsoluteLayout.Resources>
-                    <x:String
-                        x:Key="TruncateMark">...</x:String>
-                    <Style
-                        TargetType="Label">
-                        <Setter
-                            Property="BackgroundColor"
-                            Value="Beige" />
-                    </Style>
-                </AbsoluteLayout.Resources>
 
-                <!-- 横スクロール可能なラベル -->
-                <ScrollView
-                    x:Name="scrV"
-                    AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
-                    AbsoluteLayout.LayoutBounds="0.5,0,1,1"
-                    Orientation="Horizontal">
-                    <Label
-                        x:Name="text"
-                        Text="{StaticResource LongText}" />
-                </ScrollView>
-
-                <!-- 先端省略記号 -->
-                <Label
-                    x:Name="HeadTruncation"
-                    Text="{StaticResource TruncateMark}"
-                    IsVisible="False"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize">
-                    <Label.Triggers>
-                        <DataTrigger
-                            TargetType="Label"
-                            Binding="{Binding Source={x:Reference scrV}
-                                , Path=ScrollX
-                                , Converter={StaticResource KeyOfHeadTruncationConv}
-                                , ConverterParameter={x:Reference scrV}}"
-                            Value="True">
-                            <Setter
-                                Property="IsVisible"
-                                Value="True" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-
-                <!-- 末端省略記号 -->
-                <Label
-                    x:Name="TailTruncation"
-                    Text="{StaticResource TruncateMark}"
-                    IsVisible="False"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize">
-                    <Label.Triggers>
-                        <DataTrigger
-                            TargetType="Label"
-                            Binding="{Binding Source={x:Reference scrV}
-                                , Path=ScrollX
-                                , Converter={StaticResource KeyOfTailTruncationConv}
-                                , ConverterParameter={x:Reference scrV}}"
-                            Value="True">
-                            <Setter
-                                Property="IsVisible"
-                                Value="True" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-            </AbsoluteLayout>
-
-            <StackLayout
+            <controls:ScrollableLabel
+                Grid.Row="1"
+                Text="{StaticResource LongText}"/>
+            <!--<StackLayout
                 Grid.Row="1"
                 Orientation="Horizontal">
                 <Label
@@ -117,7 +55,7 @@
                     Text="{Binding Source={x:Reference scrV},Path=Width}" />
                 <Label
                     Text="{Binding Source={x:Reference text},Path=Width}" />
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
 
         <!--<AbsoluteLayout
