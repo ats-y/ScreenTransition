@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converter="clr-namespace:ScreenTransition.Converter"
     xmlns:controls="clr-namespace:ScreenTransition.Controls"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     mc:Ignorable="d"
@@ -17,7 +16,7 @@
         <ResourceDictionary>
             <x:String
                 x:Key="LongText">
-                1234567890123456789012345678901234567890123456789012345678901234567890
+                1234567.890123456789012345678901234567890123456789012345678901234567890
             </x:String>
             <x:String
                 x:Key="ShortText">
@@ -28,38 +27,37 @@
     </ContentPage.Resources>
 
     <!-- 自前のタイトルバー -->
-    <NavigationPage.TitleView
-        ios:NavigationPage.HideNavigationBarSeparator="true">
+    <NavigationPage.TitleView>
 
-        <Grid
-            x:Name="grid">
-
-            <controls:ScrollableLabel
-                Grid.Row="0"
-                Text="{Binding Source={Reference EntryStrings}, Path=Text}"
-                FontSize="Large"
-                BackgroundColor="Beige"/>
-
-            <controls:ScrollableLabel
-                Grid.Row="1"
-                Text="{StaticResource LongText}"
-                FontSize="Large"
-                BackgroundColor="Beige"/>
-
-        </Grid>
+        <controls:MultiLineTitleView
+            Title1="{StaticResource LongText}"
+            Title2="{StaticResource LongText}"
+            Title3="{StaticResource LongText}" />
 
     </NavigationPage.TitleView>
 
     <StackLayout
         Orientation="Vertical">
 
+        <Entry
+            x:Name="TitleEntry1"
+            Placeholder="タイトル1"/>
+        <Entry
+            x:Name="TitleEntry2"
+            Placeholder="タイトル2"/>
+        <Entry
+            x:Name="TitleEntry3"
+            Placeholder="タイトル3"/>
+            
         <controls:ScrollableLabel
             Text="{StaticResource LongText}"
-            BackgroundColor="White"/>
+            BackgroundColor="White" />
+
+        <controls:MultiLineTitleView />
 
         <Entry
             x:Name="EntryStrings"
-            Text="{StaticResource ShortText}"/>
+            Text="{StaticResource ShortText}" />
 
         <Label
             HorizontalTextAlignment="Center"

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:ScreenTransition.Controls"
+    x:Class="ScreenTransition.Controls.MultiLineTitleView">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <x:String
+                x:Key="LongText">
+                1234567.890123456789012345678901234567890123456789012345678901234567890
+            </x:String>
+            <x:String
+                x:Key="ShortText">
+                1234567890
+            </x:String>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid
+            VerticalOptions="Center"
+            RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <controls:ScrollableLabel
+                x:Name="Title1Label"
+                Grid.Row="0"
+                Text="1"
+                FontSize="Small"
+                BackgroundColor="Blue">
+                <controls:ScrollableLabel.Triggers>
+                    <DataTrigger
+                        TargetType="controls:ScrollableLabel"
+                        Binding="{Binding Source={Reference Title1Label}, Path=Text.Length}"
+                        Value="0">
+                        <Setter
+                            Property="IsVisible"
+                            Value="False" />
+                    </DataTrigger>
+                </controls:ScrollableLabel.Triggers>
+            </controls:ScrollableLabel>
+
+            <controls:ScrollableLabel
+                x:Name="Title2Label"
+                Grid.Row="1"
+                Text="2"
+                FontSize="Small"
+                BackgroundColor="Red">
+                <controls:ScrollableLabel.Triggers>
+                    <DataTrigger
+                        TargetType="controls:ScrollableLabel"
+                        Binding="{Binding Source={Reference Title2Label}, Path=Text.Length}"
+                        Value="0">
+                        <Setter
+                            Property="IsVisible"
+                            Value="False" />
+                    </DataTrigger>
+                </controls:ScrollableLabel.Triggers>
+            </controls:ScrollableLabel>
+
+            <controls:ScrollableLabel
+                x:Name="Title3Label"
+                Grid.Row="2"
+                Text="3"
+                FontSize="Small"
+                BackgroundColor="Green">
+                <controls:ScrollableLabel.Triggers>
+                    <DataTrigger
+                        TargetType="controls:ScrollableLabel"
+                        Binding="{Binding Source={Reference Title3Label}, Path=Text.Length}"
+                        Value="0">
+                        <Setter
+                            Property="IsVisible"
+                            Value="False" />
+                    </DataTrigger>
+                </controls:ScrollableLabel.Triggers>
+
+            </controls:ScrollableLabel>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
