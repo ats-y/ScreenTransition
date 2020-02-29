@@ -13,11 +13,14 @@
 
         <ResourceDictionary>
 
+            <Color x:Key="BarBackColor">Beige</Color>
+                    
+
             <Style
                 TargetType="NavigationPage">
                 <Setter
                     Property="BarBackgroundColor"
-                    Value="Beige" />
+                    Value="{StaticResource BarBackColor}" />
                 <Setter
                     Property="BarTextColor"
                     Value="DarkBlue" />

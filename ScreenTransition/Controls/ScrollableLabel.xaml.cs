@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace ScreenTransition.Controls
 {
+    /// <summary>
+    /// スクロール可能ラベル。
+    /// </summary>
     public partial class ScrollableLabel : ContentView
     {
         public ScrollableLabel()
@@ -13,6 +15,9 @@ namespace ScreenTransition.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// フォントサイズを設定するバインダブルプロパティ。
+        /// </summary>
         #region FontSize BindableProperty
         public static readonly BindableProperty FontSizeProperty =
             BindableProperty.Create("FontSize", typeof(double), typeof(ScrollableLabel), null, BindingMode.TwoWay, propertyChanged: OnFontSizePropertyChanged);
@@ -33,8 +38,10 @@ namespace ScreenTransition.Controls
         }
         #endregion
 
+        /// <summary>
+        /// 表示文字列を設定するバインダブルプロパティ。
+        /// </summary>
         #region Text BindableProperty
-
         public static readonly BindableProperty TextProperty =
             BindableProperty.Create("Text", typeof(string), typeof(ScrollableLabel), null, BindingMode.TwoWay, propertyChanged: OnTextPropertyChanged);
 
@@ -49,7 +56,6 @@ namespace ScreenTransition.Controls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
         #endregion
 
         /// <summary>

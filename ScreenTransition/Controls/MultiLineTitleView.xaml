@@ -1,28 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+複数業表示可能なタイトルバー。
+-->
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:ScreenTransition.Controls"
     x:Class="ScreenTransition.Controls.MultiLineTitleView">
 
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <x:String
-                x:Key="LongText">
-                1234567.890123456789012345678901234567890123456789012345678901234567890
-            </x:String>
-            <x:String
-                x:Key="ShortText">
-                1234567890
-            </x:String>
-        </ResourceDictionary>
-    </ContentView.Resources>
-
     <ContentView.Content>
+
+        <!-- タイトル1〜3を縦に並べる -->
         <Grid
             VerticalOptions="Center"
             RowSpacing="0">
 
+            <!-- タイトルが空の時に高さを0にするためにGridで各行の高さをAuto指定する -->
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="Auto" />
@@ -32,12 +25,12 @@
                     Height="Auto" />
             </Grid.RowDefinitions>
 
+            <!-- タイトル1行目 -->
             <controls:ScrollableLabel
                 x:Name="Title1Label"
                 Grid.Row="0"
-                Text="1"
-                FontSize="Small"
-                BackgroundColor="Blue">
+                Text=""
+                FontSize="Small">
                 <controls:ScrollableLabel.Triggers>
                     <DataTrigger
                         TargetType="controls:ScrollableLabel"
@@ -50,12 +43,12 @@
                 </controls:ScrollableLabel.Triggers>
             </controls:ScrollableLabel>
 
+            <!-- タイトル2行目 -->
             <controls:ScrollableLabel
                 x:Name="Title2Label"
                 Grid.Row="1"
-                Text="2"
-                FontSize="Small"
-                BackgroundColor="Red">
+                Text=""
+                FontSize="Small">
                 <controls:ScrollableLabel.Triggers>
                     <DataTrigger
                         TargetType="controls:ScrollableLabel"
@@ -68,12 +61,12 @@
                 </controls:ScrollableLabel.Triggers>
             </controls:ScrollableLabel>
 
+            <!-- タイトル3行目 -->
             <controls:ScrollableLabel
                 x:Name="Title3Label"
                 Grid.Row="2"
-                Text="3"
-                FontSize="Small"
-                BackgroundColor="Green">
+                Text=""
+                FontSize="Small">
                 <controls:ScrollableLabel.Triggers>
                     <DataTrigger
                         TargetType="controls:ScrollableLabel"

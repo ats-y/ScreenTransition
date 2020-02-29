@@ -41,7 +41,8 @@ namespace ScreenTransition
             containerRegistry.RegisterForNavigation<ChildPage, ChildPageViewModel>();
             containerRegistry.RegisterForNavigation<ChildSecondPage, ChildSecondPageViewModel>();
             containerRegistry.RegisterForNavigation<Modal01Page, Modal01PageViewModel>();
-
+            containerRegistry.RegisterForNavigation<ScrollableLabelSamplePage, ScrollableLabelSamplePageViewModel>();
+            containerRegistry.RegisterForNavigation<MultiLineTitleSamplePage, MultiLineTitleSamplePageViewModel>();
         }
     }
 }

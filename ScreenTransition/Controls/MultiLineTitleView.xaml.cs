@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace ScreenTransition.Controls
 {
+    /// <summary>
+    /// 複数行のタイトルを表示するタイトルバー。
+    /// </summary>
     public partial class MultiLineTitleView : ContentView
     {
         public MultiLineTitleView()
@@ -11,6 +12,9 @@ namespace ScreenTransition.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 1行目に表示するタイトルを設定するバインダブルプロパティ。
+        /// </summary>
         #region Title1 BindableProperty
         public static readonly BindableProperty Title1Property =
             BindableProperty.Create("Title1", typeof(string), typeof(MultiLineTitleView)
@@ -31,6 +35,9 @@ namespace ScreenTransition.Controls
         }
         #endregion
 
+        /// <summary>
+        /// 2行目に表示するタイトルを設定するバインダブルプロパティ。
+        /// </summary>
         #region Title2 BindableProperty
         public static readonly BindableProperty Title2Property =
             BindableProperty.Create("Title2", typeof(string), typeof(MultiLineTitleView)
@@ -51,6 +58,9 @@ namespace ScreenTransition.Controls
         }
         #endregion
 
+        /// <summary>
+        /// 3行目に表示するタイトルを設定するバインダブルプロパティ。
+        /// </summary>
         #region Title3 BindableProperty
         public static readonly BindableProperty Title3Property =
             BindableProperty.Create("Title3", typeof(string), typeof(MultiLineTitleView)
@@ -71,16 +81,21 @@ namespace ScreenTransition.Controls
         }
         #endregion
 
+        /// <summary>
+        /// 設定されているタイトル数によってフォントサイズを決定する。
+        /// </summary>
         private void AjustSize()
         {
+            // 空でないタイトル数をカウントする。
             int rows = 0;
             if (!string.IsNullOrEmpty(Title1)) rows++;
             if (!string.IsNullOrEmpty(Title2)) rows++;
             if (!string.IsNullOrEmpty(Title3)) rows++;
 
-            double fontSize;
+            // フォントサイズを決定し、設定する。
             FontSizeConverter fsc = new FontSizeConverter();
-            switch (rows)
+            double fontSize;
+            switch(rows)
             {
                 case 2:
                     fontSize = (double)fsc.ConvertFromInvariantString("Small");
@@ -91,7 +106,7 @@ namespace ScreenTransition.Controls
                 default:
                     fontSize = (double)fsc.ConvertFromInvariantString("Title");
                     break;
-            }
+            };
             Title1Label.FontSize = fontSize;
             Title2Label.FontSize = fontSize;
             Title3Label.FontSize = fontSize;

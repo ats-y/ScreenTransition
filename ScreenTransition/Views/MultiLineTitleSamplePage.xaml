@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:ScreenTransition.Controls"
+    x:Class="ScreenTransition.Views.MultiLineTitleSamplePage">
+
+    <NavigationPage.TitleView>
+
+        <controls:MultiLineTitleView
+            Title1="{Binding TitleText1.Value}"
+            Title2="{Binding TitleText2.Value}"
+            Title3="{Binding TitleText3.Value}"
+            BackgroundColor="{StaticResource BarBackColor}" />
+
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+    </ContentPage.Content>
+</ContentPage>

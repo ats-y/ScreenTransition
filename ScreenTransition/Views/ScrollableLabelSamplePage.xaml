@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:ScreenTransition.Controls"
+    x:Class="ScreenTransition.Views.ScrollableLabelSamplePage"
+    Title="スクロール可能ラベルサンプル">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                HasShadow="False"
+                Margin="10"
+                BorderColor="Black">
+                <StackLayout>
+                    <Label
+                        Text="スクロール可能ラベル" />
+                    <Entry
+                        x:Name="DisplayText"
+                        Placeholder="ラベルに表示する文字" />
+                    <controls:ScrollableLabel
+                        BackgroundColor="White"
+                        Text="{Binding Source={x:Reference DisplayText}
+                            , Path=Text}" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                HasShadow="False"
+                Margin="10"
+                BorderColor="Black">
+                <StackLayout>
+                    <Label
+                        Text="複数行タイトルバー"/>
+                    <Entry
+                        x:Name="Title1"
+                        Placeholder="1行目に表示するタイトル"
+                        Text="{Binding Title1.Value}"/>
+                    <Entry
+                        x:Name="Title2"
+                        Placeholder="2行目に表示するタイトル"
+                        Text="{Binding Title2.Value}"/>
+                    <Entry
+                        x:Name="Title3"
+                        Placeholder="3行目に表示するタイトル"
+                        Text="{Binding Title3.Value}"/>
+                    <Button
+                        Text="表示"
+                        Command="{Binding MultiLineTitlePageCommand}"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

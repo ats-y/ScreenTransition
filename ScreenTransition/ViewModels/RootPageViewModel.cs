@@ -27,6 +27,11 @@ namespace ScreenTransition.ViewModels
                 Title = "業務機能② 終了確認あり",
                 PageName = "SubPage"
             },
+            new MenuItem
+            {
+                Title="スクロール可能ラベルサンプル",
+                PageName = "ScrollableLabelSamplePage",
+            }
         };
 
         /// <summary>

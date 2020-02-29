@@ -30,9 +30,10 @@
     <NavigationPage.TitleView>
 
         <controls:MultiLineTitleView
-            Title1="{StaticResource LongText}"
-            Title2="{StaticResource LongText}"
-            Title3="{StaticResource LongText}" />
+            Title1="{Binding TitleText1.Value}"
+            Title2="{Binding TitleText2.Value}"
+            Title3="{Binding TitleText3.Value}"
+            BackgroundColor="{StaticResource BarBackColor}"/>
 
     </NavigationPage.TitleView>
 
@@ -41,7 +42,8 @@
 
         <Entry
             x:Name="TitleEntry1"
-            Placeholder="タイトル1"/>
+            Placeholder="タイトル1"
+            Text="{Binding TitleText1.Value}"/>
         <Entry
             x:Name="TitleEntry2"
             Placeholder="タイトル2"/>

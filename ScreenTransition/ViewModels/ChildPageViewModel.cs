@@ -8,6 +8,10 @@ namespace ScreenTransition.ViewModels
 {
     public class ChildPageViewModel : BindableBase
     {
+        public ReactiveProperty<string> TitleText1 { get; } = new ReactiveProperty<string>();
+        public ReactiveProperty<string> TitleText2 { get; } = new ReactiveProperty<string>();
+        public ReactiveProperty<string> TitleText3 { get; } = new ReactiveProperty<string>();
+
         public ReactiveProperty<string> MsgText { get; set; } = new ReactiveProperty<string>();
         public AsyncReactiveCommand CloseCommand { get; set; } = new AsyncReactiveCommand();
         public AsyncReactiveCommand NextPageCommand { get; set; } = new AsyncReactiveCommand();
@@ -21,6 +25,10 @@ namespace ScreenTransition.ViewModels
 
             CloseCommand.Subscribe(_ => OnCloseCommandAsync());
             NextPageCommand.Subscribe(_ => OnNextPageCommandAsync());
+
+            TitleText1.Value = "たいとる1";
+            TitleText2.Value = "たいとる2";
+            TitleText3.Value = "たいとる3";
         }
 
         private async Task OnNextPageCommandAsync()
