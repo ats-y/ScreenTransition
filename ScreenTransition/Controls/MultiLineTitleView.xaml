@@ -8,6 +8,18 @@
     xmlns:controls="clr-namespace:ScreenTransition.Controls"
     x:Class="ScreenTransition.Controls.MultiLineTitleView">
 
+    <ContentView.Resources>
+        <!-- タイトルバーの文字色と背景色を先祖のNavigationPageのそれに合わせる -->
+        <Style
+            TargetType="controls:ScrollableLabel">
+            <Setter
+                Property="TextColor"
+                Value="{Binding Source={RelativeSource AncestorType={x:Type NavigationPage}}, Path=BarTextColor, Mode=OneWay}" />
+            <Setter
+                Property="BackgroundColor"
+                Value="{Binding Source={RelativeSource AncestorType={x:Type NavigationPage}}, Path=BarBackgroundColor, Mode=OneWay}"/>
+        </Style>
+    </ContentView.Resources>
     <ContentView.Content>
 
         <!-- タイトル1〜3を縦に並べる -->

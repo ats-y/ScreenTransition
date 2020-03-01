@@ -59,6 +59,30 @@ namespace ScreenTransition.Controls
         #endregion
 
         /// <summary>
+        /// 文字色を設定するバインダブルプロパティ。
+        /// </summary>
+        #region TextColor BindableProperty
+        public static readonly BindableProperty TextColorProperty =
+            BindableProperty.Create("TextColor", typeof(Color), typeof(ScrollableLabel)
+                , null, BindingMode.TwoWay, propertyChanged: OnTextColorPropertyChanged);
+
+        private static void OnTextColorPropertyChanged(BindableObject bindable
+                                , object oldValue, object newValue)
+        {
+            if (!(bindable is ScrollableLabel scrollableLabel)) return;
+            scrollableLabel.TextDispLabel.TextColor = (Color)newValue;
+            scrollableLabel.HeadTruncation.TextColor = (Color)newValue;
+            scrollableLabel.TailTruncation.TextColor = (Color)newValue;
+        }
+
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
+        #endregion
+
+        /// <summary>
         /// 省略記号プロパティ変化イベント
         /// </summary>
         /// <param name="sender"></param>

@@ -10,8 +10,7 @@
         <controls:MultiLineTitleView
             Title1="{Binding TitleText1.Value}"
             Title2="{Binding TitleText2.Value}"
-            Title3="{Binding TitleText3.Value}"
-            BackgroundColor="{StaticResource BarBackColor}" />
+            Title3="{Binding TitleText3.Value}"/>
 
     </NavigationPage.TitleView>
 
